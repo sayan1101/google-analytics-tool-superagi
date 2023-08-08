@@ -31,16 +31,14 @@ class reportTool(BaseTool):
 
         pid=int(self.get_tool_config("PROPERTY_ID"))
 
-        f=open("JSONcontent.json","w+")
+       
         dict=self.get_tool_config("GOOGLE_CREDENTIALS_FILE")
         d=dict
         s=json.loads(json.loads(dict))
-        print(type(s))
-        f.write(s)
-        print(f.read())
-        f.close()
+        with open("sample.json", "w") as outfile:
+            json.dump(s, outfile)
         os.environ[
-            'GOOGLE_APPLICATION_CREDENTIALS'] = "JSONcontent.json"
+            'GOOGLE_APPLICATION_CREDENTIALS'] = "sample.json"
 
         print(
             "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
